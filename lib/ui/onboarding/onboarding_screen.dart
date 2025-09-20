@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+import 'package:grocery_app/ui/onboarding/onboarding_viewmodel.dart';
+import 'package:grocery_app/ui/onboarding/widgets/onboarding_widget.dart';
+import 'package:provider/provider.dart';
+
+class OnboardingScreen extends StatelessWidget {
+  const OnboardingScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final notifier = context.read<OnboardingViewModel>();
+    return Scaffold(
+      body: PageView.builder(
+        controller: notifier.pageController,
+        itemCount: notifier.onboardingData.length,
+        itemBuilder: (context, index) {
+          final data = notifier.onboardingData[index];
+          return OnboardingWidget(
+            data: data,
+            currentIndex: index,
+            totalPages: notifier.onboardingData.length,
+            onButtonPressed: () {
+              notifier.onButtonPressed(index);
+            },
+          );
+        },
+      ),
+    );
+  }
+}
