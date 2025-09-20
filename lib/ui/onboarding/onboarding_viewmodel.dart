@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/constants/app_images.dart';
 import 'package:grocery_app/constants/app_strings.dart';
 import 'package:grocery_app/models/onboarding_data.dart';
+import 'package:grocery_app/ui/auth/welcome/auth_welcome_view.dart';
 
 class OnboardingViewModel extends ChangeNotifier {
   // page view controller
@@ -33,7 +34,7 @@ class OnboardingViewModel extends ChangeNotifier {
   ];
 
 
-  onButtonPressed(int index) {
+  onButtonPressed(int index, context) {
     if (index < onboardingData.length - 1) {
       pageController.nextPage(
         duration: Duration(milliseconds: 300),
@@ -41,6 +42,7 @@ class OnboardingViewModel extends ChangeNotifier {
       );
     } else {
       // Navigate to home screen or another screen
+      Navigator.push(context, MaterialPageRoute(builder: (context) => AuthWelcomeView()));
     }
   }
 }

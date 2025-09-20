@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/ui/onboarding/onboarding_screen.dart';
+import 'package:grocery_app/constants/app_colors.dart';
 import 'package:grocery_app/ui/onboarding/onboarding_viewmodel.dart';
+import 'package:grocery_app/ui/splash/splash_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -15,8 +16,11 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => OnboardingViewModel())],
       child: MaterialApp(
-        home: OnboardingScreen(),
+        home: SplashView(),
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
+        ),
       ),
     );
   }

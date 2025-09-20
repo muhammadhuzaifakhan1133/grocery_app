@@ -9,26 +9,68 @@ class ButtonWidget extends StatelessWidget {
   final double? borderRadius;
   final VoidCallback? onButtonPressed;
   final String buttonText;
-  const ButtonWidget({super.key, this.width, this.height, this.borderRadius, this.onButtonPressed, required this.buttonText});
+  final TextStyle? textStyle;
+  final String? iconImage;
+  final Color? buttonColor;
+  final double? iconLeftPadding;
+  const ButtonWidget({
+    super.key,
+    this.width,
+    this.height,
+    this.borderRadius,
+    this.onButtonPressed,
+    required this.buttonText,
+    this.textStyle,
+    this.iconImage,
+    this.buttonColor,
+    this.iconLeftPadding,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width ??context.width * 0.85,
+      width: width,
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius ?? 5),
-        gradient: const LinearGradient(
-          colors: [AppColors.primaryColor, AppColors.primaryDarkColor],
-        ),
+        color: buttonColor,
+        gradient:
+            buttonColor == null
+                ? LinearGradient(
+                  colors: [AppColors.primaryColor, AppColors.primaryDarkColor],
+                )
+                : null,
       ),
       child: TextButton(
         onPressed: onButtonPressed,
-        child: Text(
-          buttonText,
-          style: AppTextStyles.buttonStyle,
-        ),
+        child:
+            iconImage == null
+                ? Text(
+                  buttonText,
+                  style: textStyle ?? AppTextStyles.buttonStyle,
+                )
+                : Row(
+                  children: [
+                    if (iconImage != null)
+                      Padding(
+                        padding: EdgeInsets.only(left: iconLeftPadding ?? 10),
+                        child: Image.asset(iconImage!, width: 20, height: 20),
+                      ),
+                    SizedBox(width: context.width * 0.13),
+                    Text(
+                      buttonText,
+                      style: textStyle ?? AppTextStyles.buttonStyle,
+                    ),
+                  ],
+                ),
       ),
     );
   }
 }
+
+
+// if (iconImage != null)
+//               Positioned(
+//                 left: iconLeftPadding ?? 5,
+//                 child: Image.asset(iconImage!, width: 20, height: 20),
+//               ),

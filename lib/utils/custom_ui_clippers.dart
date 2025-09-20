@@ -5,7 +5,7 @@ class OnboardingContainerClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     final path = Path();
 
-    var offset = 80.0;
+    var offset = 100.0;
 
     var controlPoint = Offset(size.width / 2, 0);
     var endPoint = Offset(0, offset);

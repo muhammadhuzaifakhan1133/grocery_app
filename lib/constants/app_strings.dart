@@ -14,4 +14,10 @@ class AppStrings {
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy";
   static const String getStarted = "Get Started";
   static const String next = "Next";
+  static const String welcome = "Welcome";
+  static const String welcomeAuthDescription = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy";
+  static const String continueWithGoogle = "Continue With Google";
+  static const String createAccount = "Create an account";
+  static const String login = "Login";
+  static const String alreadyHaveAnAccount = "Already have an account ? ";
 }

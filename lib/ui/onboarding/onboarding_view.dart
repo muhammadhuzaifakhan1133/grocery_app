@@ -3,8 +3,8 @@ import 'package:grocery_app/ui/onboarding/onboarding_viewmodel.dart';
 import 'package:grocery_app/ui/onboarding/widgets/onboarding_widget.dart';
 import 'package:provider/provider.dart';
 
-class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({super.key});
+class OnboardingView extends StatelessWidget {
+  const OnboardingView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class OnboardingScreen extends StatelessWidget {
             currentIndex: index,
             totalPages: notifier.onboardingData.length,
             onButtonPressed: () {
-              notifier.onButtonPressed(index);
+              notifier.onButtonPressed(index, context);
             },
           );
         },

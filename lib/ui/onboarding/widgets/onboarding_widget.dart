@@ -22,7 +22,7 @@ class OnboardingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [onboardingImage(context), contentSection(context)]);
+    return Stack(children: [backgroundImage(context), contentSection(context)]);
   }
 
   Positioned contentSection(BuildContext context) {
@@ -32,9 +32,14 @@ class OnboardingWidget extends StatelessWidget {
         clipper: OnboardingContainerClipper(),
         child: Container(
           width: context.width,
-          height: context.height * 0.45,
+          constraints: BoxConstraints(minHeight: context.height * 0.45),
           color: AppColors.whiteColor,
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.only(
+            right: 20.0,
+            left: 20.0,
+            top: 80.0,
+            bottom: 30.0,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -55,7 +60,11 @@ class OnboardingWidget extends StatelessWidget {
 
   ButtonWidget onboardingButton(BuildContext context) {
     return ButtonWidget(
-      buttonText: currentIndex == totalPages - 1 ? AppStrings.getStarted : AppStrings.next,
+      width: context.width * 0.85,
+      buttonText:
+          currentIndex == totalPages - 1
+              ? AppStrings.getStarted
+              : AppStrings.next,
       onButtonPressed: onButtonPressed,
     );
   }
@@ -97,7 +106,7 @@ class OnboardingWidget extends StatelessWidget {
     );
   }
 
-  Positioned onboardingImage(BuildContext context) {
+  Positioned backgroundImage(BuildContext context) {
     return Positioned(
       top: 0,
       child: Container(

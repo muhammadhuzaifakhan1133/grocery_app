@@ -8,10 +8,10 @@ class AppTextStyles {
     color: AppColors.blackColor,
     shadows: [
       Shadow(
-            color: AppColors.blackColor.withOpacity(0.5),
-            offset: const Offset(2, 2),
-            blurRadius: 4,
-          ),
+        color: AppColors.blackColor.withOpacity(0.5),
+        offset: const Offset(2, 2),
+        blurRadius: 4,
+      ),
     ],
   );
 
@@ -23,5 +23,18 @@ class AppTextStyles {
   static const TextStyle buttonStyle = TextStyle(
     color: AppColors.whiteColor,
     fontWeight: FontWeight.bold,
+    fontSize: 15,
+  );
+
+  static const TextStyle title = TextStyle(
+    color: AppColors.blackColor,
+    fontWeight: FontWeight.bold,
+    fontSize: 25,
+  );
+
+  static const TextStyle appBarTitleStyle = TextStyle(
+    color: AppColors.whiteColor,
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
   );
 }
