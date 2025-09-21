@@ -3,7 +3,7 @@ import 'package:grocery_app/constants/app_colors.dart';
 import 'package:grocery_app/constants/app_text_styles.dart';
 import 'package:grocery_app/utils/extensions.dart';
 
-class ButtonWidget extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final double? width;
   final double? height;
   final double? borderRadius;
@@ -13,7 +13,7 @@ class ButtonWidget extends StatelessWidget {
   final String? iconImage;
   final Color? buttonColor;
   final double? iconLeftPadding;
-  const ButtonWidget({
+  const CustomButton({
     super.key,
     this.width,
     this.height,
@@ -29,7 +29,7 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width,
+      width: width ?? context.width * 0.9,
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius ?? 5),

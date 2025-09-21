@@ -33,8 +33,19 @@ class AppTextStyles {
   );
 
   static const TextStyle appBarTitleStyle = TextStyle(
-    color: AppColors.whiteColor,
+    color: AppColors.blackColor,
     fontWeight: FontWeight.bold,
     fontSize: 18,
+  );
+
+  static const TextStyle hintTextStyle = TextStyle(
+    fontSize: 15,
+    color: AppColors.greyTextColor,
+  );
+
+  static const TextStyle categoryTitleStyle = TextStyle(
+    fontSize: 10,
+    color: AppColors.greyTextColor,
+    fontWeight: FontWeight.w500,
   );
 }

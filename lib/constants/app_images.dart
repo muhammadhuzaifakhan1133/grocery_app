@@ -7,6 +7,23 @@ class AppImages {
   static const String welcomeBackground = 'assets/images/welcome_auth.png';
   static const String loginBackground = 'assets/images/login_auth.png';
   static const String signupBackground = 'assets/images/signup_auth.png';
-  static const String googleIcon = 'assets/images/google_icon.png';
-  static const String createAccount = 'assets/images/create_account.png';
+  static const String googleIcon = 'assets/icons/google_icon.png';
+  static const String createAccount = 'assets/icons/create_account.png';
+  static const String emailIcon = 'assets/icons/email_icon.png';
+  static const String phoneIcon = 'assets/icons/phone_icon.png';
+  static const String lockIcon = 'assets/icons/lock_icon.png';
+  static const String eyeIcon = 'assets/icons/eye_icon.png';
+  static const String searchIcon = 'assets/icons/search_icon.png';
+  static const String filterIcon = 'assets/icons/filter_icon.png';
+  static const String adBanner1 = 'assets/images/home_ad_banner1.jpg';
+  static const String adBanner2 = 'assets/images/home_ad_banner2.jpg';
+  static const String adBanner3 = 'assets/images/home_ad_banner3.jpg';
+  static const String adBanner4 = 'assets/images/home_ad_banner4.jpg';
+  static const String category1 = 'assets/icons/category1.png';
+  static const String category2 = 'assets/icons/category2.png';
+  static const String category3 = 'assets/icons/category3.png';
+  static const String category4 = 'assets/icons/category4.png';
+  static const String category5 = 'assets/icons/category5.png';
+  static const String category6 = 'assets/icons/category6.png';
+  static const String category7 = 'assets/icons/category7.png';
 }

@@ -5,7 +5,8 @@ import 'package:grocery_app/models/onboarding_data.dart';
 import 'package:grocery_app/constants/app_colors.dart';
 import 'package:grocery_app/utils/custom_ui_clippers.dart';
 import 'package:grocery_app/utils/extensions.dart';
-import 'package:grocery_app/widgets/button_widget.dart';
+import 'package:grocery_app/widgets/backgrond_stacked_image.dart';
+import 'package:grocery_app/widgets/custom_button.dart';
 
 class OnboardingWidget extends StatelessWidget {
   final OnboardingDataModel data;
@@ -22,7 +23,16 @@ class OnboardingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [backgroundImage(context), contentSection(context)]);
+    return Stack(
+      children: [
+        backgroundStackedImage(
+          context: context,
+          heightFactor: 0.65,
+          imagePath: data.imagePath,
+        ),
+        contentSection(context),
+      ],
+    );
   }
 
   Positioned contentSection(BuildContext context) {
@@ -58,8 +68,8 @@ class OnboardingWidget extends StatelessWidget {
     );
   }
 
-  ButtonWidget onboardingButton(BuildContext context) {
-    return ButtonWidget(
+  CustomButton onboardingButton(BuildContext context) {
+    return CustomButton(
       width: context.width * 0.85,
       buttonText:
           currentIndex == totalPages - 1
@@ -103,22 +113,6 @@ class OnboardingWidget extends StatelessWidget {
       data.title,
       textAlign: TextAlign.center,
       style: AppTextStyles.onboardingTitleStyle,
-    );
-  }
-
-  Positioned backgroundImage(BuildContext context) {
-    return Positioned(
-      top: 0,
-      child: Container(
-        width: context.width,
-        height: context.height * 0.65, // Top container for image
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(data.imagePath),
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
     );
   }
 }

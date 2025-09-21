@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/ui/onboarding/onboarding_viewmodel.dart';
+import 'package:grocery_app/ui/onboarding/onboarding_view_model.dart';
 import 'package:grocery_app/ui/onboarding/widgets/onboarding_widget.dart';
 import 'package:provider/provider.dart';
 

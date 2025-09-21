@@ -1,11 +1,15 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:grocery_app/constants/app_colors.dart';
 import 'package:grocery_app/constants/app_images.dart';
 import 'package:grocery_app/constants/app_strings.dart';
 import 'package:grocery_app/constants/app_text_styles.dart';
+import 'package:grocery_app/routes/routes.dart';
 import 'package:grocery_app/utils/extensions.dart';
 import 'package:grocery_app/widgets/appbar_widget.dart';
-import 'package:grocery_app/widgets/button_widget.dart';
+import 'package:grocery_app/widgets/backgrond_stacked_image.dart';
+import 'package:grocery_app/widgets/custom_button.dart';
 
 class AuthWelcomeView extends StatelessWidget {
   const AuthWelcomeView({super.key});
@@ -13,11 +17,19 @@ class AuthWelcomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWidget(title: AppStrings.welcome, context: context),
+      appBar: appBarWidget(
+        title: AppStrings.welcome,
+        context: context,
+        textColor: AppColors.whiteColor,
+      ),
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [
-          backgroundImage(context),
+          backgroundStackedImage(
+            context: context,
+            heightFactor: 0.7,
+            imagePath: AppImages.welcomeBackground,
+          ),
           // content section
           contentSection(context),
         ],
@@ -47,9 +59,12 @@ class AuthWelcomeView extends StatelessWidget {
               child: Text(AppStrings.welcome, style: AppTextStyles.title),
             ),
             SizedBox(height: 5),
-            Text(
-              AppStrings.welcomeAuthDescription,
-              style: AppTextStyles.onboardingDescriptionStyle,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                AppStrings.welcomeAuthDescription,
+                style: AppTextStyles.onboardingDescriptionStyle,
+              ),
             ),
             SizedBox(height: 15),
             authButtons(context),
@@ -64,7 +79,13 @@ class AuthWelcomeView extends StatelessWidget {
                     style: AppTextStyles.onboardingDescriptionStyle.copyWith(
                       color: AppColors.blackColor,
                       fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline,
                     ),
+                    recognizer:
+                        TapGestureRecognizer()
+                          ..onTap = () {
+                            context.push(AppRoutes.login);
+                          },
                   ),
                 ],
               ),
@@ -78,7 +99,7 @@ class AuthWelcomeView extends StatelessWidget {
   Column authButtons(BuildContext context) {
     return Column(
       children: [
-        ButtonWidget(
+        CustomButton(
           buttonText: AppStrings.continueWithGoogle,
           width: context.width * 0.9,
           iconImage: AppImages.googleIcon,
@@ -89,28 +110,15 @@ class AuthWelcomeView extends StatelessWidget {
           ),
         ),
         SizedBox(height: 10),
-        ButtonWidget(
+        CustomButton(
           buttonText: AppStrings.createAccount,
           width: context.width * 0.9,
           iconImage: AppImages.createAccount,
+          onButtonPressed: () {
+            context.push(AppRoutes.signup);
+          },
         ),
       ],
-    );
-  }
-
-  Positioned backgroundImage(BuildContext context) {
-    return Positioned(
-      top: 0,
-      child: Container(
-        width: context.width,
-        height: context.height * 0.7,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(AppImages.welcomeBackground),
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
     );
   }
 }
