@@ -18,6 +18,7 @@ class HomeAdBanner extends StatelessWidget {
         children: [
           PageView.builder(
             itemCount: 4,
+            controller: viewModel.pageController,
             onPageChanged: (index) {
               viewModel.setCurrentAdIndex(index);
             },

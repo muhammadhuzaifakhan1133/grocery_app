@@ -6,10 +6,13 @@ AppBar appBarWidget({
   required String title,
   required BuildContext context,
   Color textColor = AppColors.blackColor,
+  Color? backgroundColor,
+  List<Widget>? actions,
 }) {
   return AppBar(
     centerTitle: true,
-    backgroundColor: AppColors.transparent,
+    backgroundColor: backgroundColor ?? AppColors.transparent,
+    actions: actions,
     title: Text(
       title,
       style: AppTextStyles.appBarTitleStyle.copyWith(color: textColor),

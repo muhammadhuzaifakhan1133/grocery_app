@@ -15,6 +15,7 @@ class AppImages {
   static const String eyeIcon = 'assets/icons/eye_icon.png';
   static const String searchIcon = 'assets/icons/search_icon.png';
   static const String filterIcon = 'assets/icons/filter_icon.png';
+  static const String blackFilterIcon = 'assets/icons/black_filter_icon.png';
   static const String adBanner1 = 'assets/images/home_ad_banner1.jpg';
   static const String adBanner2 = 'assets/images/home_ad_banner2.jpg';
   static const String adBanner3 = 'assets/images/home_ad_banner3.jpg';
