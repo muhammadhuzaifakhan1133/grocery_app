@@ -26,4 +26,13 @@ class AppImages {
   static const String category5 = 'assets/icons/category5.png';
   static const String category6 = 'assets/icons/category6.png';
   static const String category7 = 'assets/icons/category7.png';
+  static const String fruit1 = 'assets/images/fruit1.png';
+  static const String fruit2 = 'assets/images/fruit2.png';
+  static const String fruit3 = 'assets/images/fruit3.png';
+  static const String fruit4 = 'assets/images/fruit4.png';
+  static const String fruit5 = 'assets/images/fruit5.png';
+  static const String fruit6 = 'assets/images/fruit6.png';
+  static const String minusIcon = 'assets/icons/minus.png';
+  static const String plusIcon = 'assets/icons/plus.png';
+  static const String cartIcon = 'assets/icons/cart_icon.png';
 }

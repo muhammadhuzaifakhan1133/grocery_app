@@ -53,4 +53,7 @@ class AppStrings {
   static const String otpValidation3 = "OTP must contain only digits";
   static const String searchKeywordHint = "Search keywords...";
   static const String categoriesTitle = "Categories";
+  static const String featuredproducts = "Featured Products";
+  static const String addToCart = "Add to Cart";
+  static const String newText = "New";
 }

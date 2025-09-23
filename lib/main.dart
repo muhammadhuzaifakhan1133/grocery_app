@@ -32,13 +32,20 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => OtpViewModel()),
         ChangeNotifierProvider(create: (_) => HomeViewModel()),
       ],
-      child: MaterialApp.router(
-        routerConfig: router,
+      child: MaterialApp(
+        home: HomeView(),
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
         ),
       ),
+      // child: MaterialApp.router(
+      //   routerConfig: router,
+      //   debugShowCheckedModeBanner: false,
+      //   theme: ThemeData(
+      //     scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
+      //   ),
+      // ),
     );
   }
 }

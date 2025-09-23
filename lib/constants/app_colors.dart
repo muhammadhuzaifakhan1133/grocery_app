@@ -17,4 +17,8 @@ class AppColors {
   static const category5 = Color(0xffDCF4F5);
   static const category6 = Color(0xffFFE8F2);
   static const category7 = Color(0xffD2EFFF);
+  static const furitCicle = Color(0xffFFCEC1);
+  static const offerContainerColor = Color(0xffFDEFD5);
+  static const offerTagColor = Color(0xffE8AD41);
+  static const favoriteColor = Color(0xffFE585A);
 }

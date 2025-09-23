@@ -48,4 +48,22 @@ class AppTextStyles {
     color: AppColors.greyTextColor,
     fontWeight: FontWeight.w500,
   );
+
+  static const TextStyle productPriceStyle = TextStyle(
+    fontSize: 12,
+    color: AppColors.primaryDarkColor,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle productTitlleStyle = TextStyle(
+    fontSize: 15,
+    color: AppColors.blackColor,
+    fontWeight: FontWeight.bold,
+  );
+
+  static const TextStyle cartCountStyle = TextStyle(
+    fontSize: 12,
+    color: AppColors.blackColor,
+    fontWeight: FontWeight.bold,
+  );
 }
