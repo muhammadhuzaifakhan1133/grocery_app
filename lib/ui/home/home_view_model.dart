@@ -17,6 +17,13 @@ class HomeViewModel extends ChangeNotifier {
 
   Timer? autoScrollAdTimer;
 
+  bool showMore = false;
+
+  void toggleShowMore() {
+    showMore = !showMore;
+    notifyListeners();
+  }
+
   void startAutoScrollAdTimer() {
     autoScrollAdTimer = Timer.periodic(const Duration(seconds: 3), (timer) {
       if (currentAdBannerIndex < adBanners.length - 1) {
@@ -58,6 +65,7 @@ class HomeViewModel extends ChangeNotifier {
       price: '\$8.00',
       availableQty: 'dozen',
       isAddedInCart: false,
+      color: const Color(0xffFFCEC1),
     ),
     ProductModel(
       image: AppImages.fruit2,
@@ -65,6 +73,7 @@ class HomeViewModel extends ChangeNotifier {
       price: '\$7.00',
       availableQty: '2.0 lbs',
       isAddedInCart: true,
+      color: const Color(0xffFCFFD9),
     ),
     ProductModel(
       image: AppImages.fruit3,
@@ -73,6 +82,7 @@ class HomeViewModel extends ChangeNotifier {
       availableQty: '1kg',
       isAddedInCart: false,
       isFavorite: true,
+      color: const Color(0xffFFE6C2),
     ),
     ProductModel(
       image: AppImages.fruit4,
@@ -80,6 +90,7 @@ class HomeViewModel extends ChangeNotifier {
       price: '\$7.05',
       availableQty: '5.0 lbs',
       isAddedInCart: false,
+      color: const Color(0xffFEE1ED),
     ),
     ProductModel(
       image: AppImages.fruit5,
@@ -87,6 +98,7 @@ class HomeViewModel extends ChangeNotifier {
       price: '\$2.09',
       availableQty: '1.50 lbs',
       isAddedInCart: true,
+      color: Color(0xffFFE3E2),
     ),
     ProductModel(
       image: AppImages.fruit6,
@@ -95,6 +107,7 @@ class HomeViewModel extends ChangeNotifier {
       availableQty: '1kg',
       isAddedInCart: false,
       isFavorite: true,
+      color: const Color(0xffD2FFD0),
     ),
   ];
 
@@ -152,6 +165,8 @@ class HomeViewModel extends ChangeNotifier {
       availableQty: product.availableQty,
       isAddedInCart: true,
       isFavorite: product.isFavorite,
+      quantity: 1,
+      color: product.color,
     );
     notifyListeners();
   }
@@ -165,6 +180,8 @@ class HomeViewModel extends ChangeNotifier {
       availableQty: product.availableQty,
       isAddedInCart: false,
       isFavorite: product.isFavorite,
+      quantity: 1,
+      color: product.color,
     );
     notifyListeners();
   }
@@ -180,6 +197,7 @@ class HomeViewModel extends ChangeNotifier {
       isAddedInCart: product.isAddedInCart,
       isFavorite: product.isFavorite,
       quantity: newQuantity,
+      color: product.color,
     );
     notifyListeners();
   }
@@ -196,6 +214,7 @@ class HomeViewModel extends ChangeNotifier {
         isAddedInCart: product.isAddedInCart,
         isFavorite: product.isFavorite,
         quantity: newQuantity,
+        color: product.color,
       );
       notifyListeners();
     } else {
@@ -213,6 +232,7 @@ class HomeViewModel extends ChangeNotifier {
       isAddedInCart: product.isAddedInCart,
       isFavorite: !product.isFavorite,
       quantity: product.quantity,
+      color: product.color,
     );
     notifyListeners();
   }

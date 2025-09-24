@@ -27,7 +27,10 @@ class CategoryProductsView extends StatelessWidget {
           ),
         ],
       ),
-      body: ProductGridView(viewModel: viewModel),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: ProductGridView(viewModel: viewModel),
+      ),
     );
   }
 }

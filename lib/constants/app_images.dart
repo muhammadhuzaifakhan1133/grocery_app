@@ -36,4 +36,5 @@ class AppImages {
   static const String minusIcon = 'assets/icons/minus.png';
   static const String plusIcon = 'assets/icons/plus.png';
   static const String cartIcon = 'assets/icons/cart_icon.png';
+  static const String whiteCartIcon = 'assets/icons/white_cart_icon.png';
 }

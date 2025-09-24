@@ -21,4 +21,7 @@ class AppColors {
   static const offerContainerColor = Color(0xffFDEFD5);
   static const offerTagColor = Color(0xffE8AD41);
   static const favoriteColor = Color(0xffFE585A);
+  static const priceColor = Color(0xff28B446);
+  static const starColor = Color(0xffFFC107);
+  static const dividerColor = Color(0xffEBEBEB);
 }

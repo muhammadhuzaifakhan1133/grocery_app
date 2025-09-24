@@ -6,10 +6,7 @@ import 'package:grocery_app/routes/router.dart';
 import 'package:grocery_app/routes/routes.dart';
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({
-    super.key,
-    required this.category,
-  });
+  const CategoryCard({super.key, required this.category});
 
   final CategoryModel category;
 
@@ -17,9 +14,10 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        router.goNamed(AppRoutes.categoryProducts, queryParameters: {
-          'title': category.title,
-        });
+        context.pushNamed(
+          AppRoutes.categoryProducts,
+          queryParameters: {'title': category.title},
+        );
       },
       child: Column(
         children: [

@@ -13,6 +13,7 @@ class CustomButton extends StatelessWidget {
   final String? iconImage;
   final Color? buttonColor;
   final double? iconLeftPadding;
+  final bool? isIconRight;
   const CustomButton({
     super.key,
     this.width,
@@ -24,6 +25,7 @@ class CustomButton extends StatelessWidget {
     this.iconImage,
     this.buttonColor,
     this.iconLeftPadding,
+    this.isIconRight = false,
   });
 
   @override
@@ -51,16 +53,35 @@ class CustomButton extends StatelessWidget {
                 )
                 : Row(
                   children: [
-                    if (iconImage != null)
+                    if (iconImage != null && isIconRight == false) ...[
                       Padding(
                         padding: EdgeInsets.only(left: iconLeftPadding ?? 10),
                         child: Image.asset(iconImage!, width: 20, height: 20),
                       ),
-                    SizedBox(width: context.width * 0.13),
-                    Text(
-                      buttonText,
-                      style: textStyle ?? AppTextStyles.buttonStyle,
-                    ),
+                      Expanded(
+                        child: Center(
+                          child: Text(
+                            buttonText,
+                            style: textStyle ?? AppTextStyles.buttonStyle,
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: context.width * 0.05),
+                    ],
+                    if (iconImage != null && isIconRight == true) ...[
+                      Expanded(
+                        child: Center(
+                          child: Text(
+                            buttonText,
+                            style: textStyle ?? AppTextStyles.buttonStyle,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(right: iconLeftPadding ?? 10),
+                        child: Image.asset(iconImage!, width: 20, height: 20),
+                      ),
+                    ],
                   ],
                 ),
       ),

@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:grocery_app/models/category_model.dart';
+import 'package:grocery_app/models/product_model.dart';
 import 'package:grocery_app/routes/routes.dart';
 import 'package:grocery_app/ui/auth/forgot_password/forgot_password_view.dart';
 import 'package:grocery_app/ui/auth/login/login_view.dart';
@@ -10,6 +11,7 @@ import 'package:grocery_app/ui/category_products/category_products_view.dart';
 import 'package:grocery_app/ui/home/home_view.dart';
 import 'package:grocery_app/ui/onboarding/onboarding_view.dart';
 import 'package:grocery_app/ui/otp/otp_view.dart';
+import 'package:grocery_app/ui/product_detail/product_detail_view.dart';
 import 'package:grocery_app/ui/splash/splash_view.dart';
 import 'package:grocery_app/ui/verify_number/verify_number_view.dart';
 
@@ -18,42 +20,52 @@ final router = GoRouter(
   routes: [
     GoRoute(
       path: AppRoutes.splash,
+      name: AppRoutes.splash,
       builder: (context, state) => const SplashView(),
     ),
     GoRoute(
       path: AppRoutes.onboarding,
+      name: AppRoutes.onboarding,
       builder: (context, state) => const OnboardingView(),
     ),
     GoRoute(
       path: AppRoutes.welcome,
+      name: AppRoutes.welcome,
       builder: (context, state) => const AuthWelcomeView(),
     ),
     GoRoute(
       path: AppRoutes.signup,
+      name: AppRoutes.signup,
       builder: (context, state) => const SignUpView(),
     ),
     GoRoute(
       path: AppRoutes.login,
+      name: AppRoutes.login,
       builder: (context, state) => const LoginView(),
     ),
     GoRoute(
       path: AppRoutes.forgotPassword,
+      name: AppRoutes.forgotPassword,
       builder: (context, state) => const ForgotPasswordView(),
     ),
     GoRoute(
       path: AppRoutes.verifyNumber,
+      name: AppRoutes.verifyNumber,
       builder: (context, state) => const VerifyNumberView(),
     ),
     GoRoute(
       path: AppRoutes.otp,
+      name: AppRoutes.otp,
       builder: (context, state) => const OtpView(),
     ),
     GoRoute(
       path: AppRoutes.home,
+      name: AppRoutes.home,
       builder: (context, state) => const HomeView(),
     ),
     GoRoute(
       path: AppRoutes.categories,
+      name: AppRoutes.categories,
       builder: (context, state) {
         final categories = state.extra as List<CategoryModel>;
         return CategoriesView(categories: categories);
@@ -61,9 +73,19 @@ final router = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.categoryProducts,
+      name: AppRoutes.categoryProducts,
       builder: (context, state) {
         final categoryTitle = state.uri.queryParameters['title'] as String;
         return CategoryProductsView(categoryTitle: categoryTitle);
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.productDetails,
+      name: AppRoutes.productDetails,
+      builder: (context, state) {
+        final product = state.extra as ProductModel;
+        final index = int.tryParse(state.uri.queryParameters['index'] ?? '') ?? 0;
+        return ProductDetailView(product: product, index: index);
       },
     ),
   ],

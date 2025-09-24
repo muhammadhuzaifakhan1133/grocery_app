@@ -41,3 +41,45 @@ class OnboardingContainerClipper extends CustomClipper<Path> {
     return false;
   }
 }
+
+class ProductDetailColorContainer extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+
+    var offset = 200.0;
+
+    var controlPoint = Offset(size.width / 2, size.height);
+    var endPoint = Offset(0, size.height - offset);
+
+    // Start the path at the top-left corner with an offset
+    path.moveTo(0, 0);
+
+    // Draw the straight line down to the bottom-left corner
+    path.lineTo(size.width, 0);
+
+    // Draw the straight line to the bottom-right corner
+    path.lineTo(size.width, size.height - offset);
+
+    // // Draw the straight line to the top-right corner
+    // path.lineTo(size.width, size.height - offset);
+
+    // Create a larger, smoother curve from the bottom-right to bottom-left
+    path.quadraticBezierTo(
+      controlPoint.dx,
+      controlPoint.dy,
+      endPoint.dx,
+      endPoint.dy,
+    ); // Curve at the top
+
+    // Close the path to complete the shape
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
+  }
+}

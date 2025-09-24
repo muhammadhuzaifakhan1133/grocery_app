@@ -17,7 +17,7 @@ Stack productImage(ProductModel product) {
         width: 100,
         height: 100,
         decoration: BoxDecoration(
-          color: AppColors.furitCicle,
+          color: product.color,
           shape: BoxShape.circle,
         ),
       ),
@@ -83,44 +83,25 @@ Positioned offerTag() {
   );
 }
 
-Positioned favoriteButton(
+Widget favoriteButton(
   HomeViewModel viewModel,
   int index,
   ProductModel product,
 ) {
-  return Positioned(
-    top: 0,
-    right: 0,
-    child: InkWell(
-      onTap: () {
-        viewModel.toggleFavorite(index);
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Icon(
-          product.isFavorite ? Icons.favorite : Icons.favorite_border,
-          color:
-              product.isFavorite
-                  ? AppColors.favoriteColor
-                  : AppColors.greyTextColor,
-        ),
+  return InkWell(
+    onTap: () {
+      viewModel.toggleFavorite(index);
+    },
+    child: Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Icon(
+        product.isFavorite ? Icons.favorite : Icons.favorite_border,
+        color:
+            product.isFavorite
+                ? AppColors.favoriteColor
+                : AppColors.greyTextColor,
       ),
     ),
-
-    // child: IconButton(
-    //   padding: EdgeInsets.zero,
-    //   onPressed: () {},
-    //   icon: Icon(
-    //     product.isFavorite
-    //         ? Icons.favorite
-    //         : Icons.favorite_border,
-
-    //     color:
-    //         product.isFavorite
-    //             ? AppColors.favoriteColor
-    //             : AppColors.greyTextColor,
-    //   ),
-    // ),
   );
 }
 
