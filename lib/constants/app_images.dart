@@ -37,4 +37,9 @@ class AppImages {
   static const String plusIcon = 'assets/icons/plus.png';
   static const String cartIcon = 'assets/icons/cart_icon.png';
   static const String whiteCartIcon = 'assets/icons/white_cart_icon.png';
+  static const String reviewPerson1 = 'assets/images/review1.png';
+  static const String reviewPerson2 = 'assets/images/review2.png';
+  static const String reviewPerson3 = 'assets/images/review3.png';
+  static const String reviewPerson4 = 'assets/images/review4.png';
+  static const String editIcon = 'assets/icons/edit_icon.png';
 }

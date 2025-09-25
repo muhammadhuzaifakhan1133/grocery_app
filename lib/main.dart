@@ -7,8 +7,10 @@ import 'package:grocery_app/ui/auth/login/login_view_model.dart';
 import 'package:grocery_app/ui/auth/signup/signup_view_model.dart';
 import 'package:grocery_app/ui/home/home_view.dart';
 import 'package:grocery_app/ui/home/home_view_model.dart';
+import 'package:grocery_app/ui/home_navigation/home_navigation_controller.dart';
 import 'package:grocery_app/ui/onboarding/onboarding_view_model.dart';
 import 'package:grocery_app/ui/otp/otp_view_model.dart';
+import 'package:grocery_app/ui/reviews/reviews_vew_model.dart';
 import 'package:grocery_app/ui/splash/splash_view.dart';
 import 'package:grocery_app/ui/verify_number/verify_number_view_model.dart';
 import 'package:provider/provider.dart';
@@ -31,6 +33,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => VerifyNumberViewModel()),
         ChangeNotifierProvider(create: (_) => OtpViewModel()),
         ChangeNotifierProvider(create: (_) => HomeViewModel()),
+        ChangeNotifierProvider(create: (_) => ReviewsVewModel()),
+        ChangeNotifierProvider(create: (_) => HomeNavigationController()),
+
       ],
       // child: MaterialApp(
       //   home: HomeView(),

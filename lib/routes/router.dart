@@ -9,14 +9,17 @@ import 'package:grocery_app/ui/auth/welcome/auth_welcome_view.dart';
 import 'package:grocery_app/ui/categories/categories_view.dart';
 import 'package:grocery_app/ui/category_products/category_products_view.dart';
 import 'package:grocery_app/ui/home/home_view.dart';
+import 'package:grocery_app/ui/home_navigation/home_navigation_view.dart';
 import 'package:grocery_app/ui/onboarding/onboarding_view.dart';
 import 'package:grocery_app/ui/otp/otp_view.dart';
 import 'package:grocery_app/ui/product_detail/product_detail_view.dart';
+import 'package:grocery_app/ui/reviews/add_review_view.dart';
+import 'package:grocery_app/ui/reviews/reviews_view.dart';
 import 'package:grocery_app/ui/splash/splash_view.dart';
 import 'package:grocery_app/ui/verify_number/verify_number_view.dart';
 
 final router = GoRouter(
-  initialLocation: AppRoutes.home,
+  initialLocation: AppRoutes.homeNavigation,
   routes: [
     GoRoute(
       path: AppRoutes.splash,
@@ -59,9 +62,9 @@ final router = GoRouter(
       builder: (context, state) => const OtpView(),
     ),
     GoRoute(
-      path: AppRoutes.home,
-      name: AppRoutes.home,
-      builder: (context, state) => const HomeView(),
+      path: AppRoutes.homeNavigation,
+      name: AppRoutes.homeNavigation,
+      builder: (context, state) => const HomeNavigationView(),
     ),
     GoRoute(
       path: AppRoutes.categories,
@@ -87,6 +90,16 @@ final router = GoRouter(
         final index = int.tryParse(state.uri.queryParameters['index'] ?? '') ?? 0;
         return ProductDetailView(product: product, index: index);
       },
+    ),
+    GoRoute(
+      path: AppRoutes.reviews,
+      name: AppRoutes.reviews,
+      builder: (context, state) => const ReviewsView(),
+    ),
+    GoRoute(
+      path: AppRoutes.addReview,
+      name: AppRoutes.addReview,
+      builder: (context, state) => const AddReviewView(),
     ),
   ],
 

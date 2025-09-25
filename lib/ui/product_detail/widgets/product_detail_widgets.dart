@@ -29,18 +29,17 @@ class ProductDetailWidgets {
         ),
         Positioned(
           bottom: 30,
-          child: Image.asset(product.image, width: 250, height: 250,),
-          // child: Container(
-          //   height: 250,
-          //   width: 250,
-          //   decoration: BoxDecoration(
-          //     image: DecorationImage(
-          //       image: AssetImage(product.image),
-          //       fit: BoxFit.contain,
-          //     ),
-          //   ),
-          // ),
-        
+          // child: Image.asset(product.image, width: 250, height: 250,),
+          child: Container(
+            height: 250,
+            width: 250,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(product.image),
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
         ),
         // back icon
         Positioned(
@@ -176,14 +175,18 @@ class ProductDetailWidgets {
     );
   }
 
-  static Row ratingAndReviews({bool showReviews = true}) {
+  static Row ratingAndReviews({
+    bool showReviews = true,
+    Function()? onReviewsTap,
+    double? rating,
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text("4.5", style: AppTextStyles.cartCountStyle),
+        Text("${rating ?? 4.5}", style: AppTextStyles.cartCountStyle),
         const SizedBox(width: 5),
         StarRating(
-          rating: 4.5,
+          rating: rating ?? 4.5,
           color: AppColors.starColor,
           onRatingChanged: (rating) {
             // viewModel.setRating(rating);
@@ -191,10 +194,13 @@ class ProductDetailWidgets {
         ),
         if (showReviews) ...[
           const SizedBox(width: 5),
-          Text(
-            "(2.3k Reviews)",
-            style: AppTextStyles.cartCountStyle.copyWith(
-              color: AppColors.greyTextColor,
+          InkWell(
+            onTap: onReviewsTap,
+            child: Text(
+              "(2.3k Reviews)",
+              style: AppTextStyles.cartCountStyle.copyWith(
+                color: AppColors.greyTextColor,
+              ),
             ),
           ),
         ],

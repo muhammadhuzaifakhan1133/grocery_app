@@ -44,6 +44,10 @@ class HomeViewModel extends ChangeNotifier {
     autoScrollAdTimer?.cancel();
   }
 
+  void navigateToReviewsView(BuildContext context) {
+    context.push(AppRoutes.reviews);
+  }
+
   @override
   void dispose() {
     pageController.dispose();

@@ -18,70 +18,68 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<HomeViewModel>();
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: MediaQuery.of(context).padding.top),
-              CustomTextField(
-                controller: TextEditingController(),
-                prefixIcon: Image.asset(AppImages.searchIcon),
-                hintText: AppStrings.searchKeywordHint,
-                suffixIcon: Image.asset(AppImages.filterIcon),
-              ),
-              const SizedBox(height: 10),
-              Column(
-                children: [
-                  HomeAdBanner(),
-                  const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        AppStrings.categoriesTitle,
-                        style: AppTextStyles.appBarTitleStyle,
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: MediaQuery.of(context).padding.top),
+            CustomTextField(
+              controller: TextEditingController(),
+              prefixIcon: Image.asset(AppImages.searchIcon),
+              hintText: AppStrings.searchKeywordHint,
+              suffixIcon: Image.asset(AppImages.filterIcon),
+            ),
+            const SizedBox(height: 10),
+            Column(
+              children: [
+                HomeAdBanner(),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      AppStrings.categoriesTitle,
+                      style: AppTextStyles.appBarTitleStyle,
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        viewModel.navigateToCategoriesView(context);
+                      },
+                      icon: Icon(
+                        Icons.arrow_forward_ios,
+                        color: AppColors.greyTextColor,
                       ),
-                      IconButton(
-                        onPressed: () {
-                          viewModel.navigateToCategoriesView(context);
-                        },
-                        icon: Icon(
-                          Icons.arrow_forward_ios,
-                          color: AppColors.greyTextColor,
-                        ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: HomeViewWidgets.productCategories(viewModel),
+                ),
+                const SizedBox(height: 25),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      AppStrings.featuredproducts,
+                      style: AppTextStyles.appBarTitleStyle,
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.arrow_forward_ios,
+                        color: AppColors.greyTextColor,
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 15),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: HomeViewWidgets.productCategories(viewModel),
-                  ),
-                  const SizedBox(height: 25),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        AppStrings.featuredproducts,
-                        style: AppTextStyles.appBarTitleStyle,
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.arrow_forward_ios,
-                          color: AppColors.greyTextColor,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 15),
-                  ProductGridView(viewModel: viewModel),
-                ],
-              ),
-            ],
-          ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15),
+                ProductGridView(viewModel: viewModel),
+              ],
+            ),
+          ],
         ),
       ),
     );

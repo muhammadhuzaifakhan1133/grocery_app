@@ -30,7 +30,7 @@ class ProductGridView extends StatelessWidget {
         // A fixed aspect ratio ensures cards don't get stretched or squeezed.
         // 0.75 means the height is 1.33 times the width (4:3 aspect ratio),
         // which is a good fit for this card design.
-        childAspectRatio: context.isPortrait ? 0.68 : 0.9,
+        childAspectRatio: context.isPortrait ? 0.68 : 0.85,
       ),
       itemCount: viewModel.featuredProducts.length,
       itemBuilder: (context, index) {
