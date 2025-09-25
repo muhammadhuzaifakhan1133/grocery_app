@@ -8,114 +8,124 @@ import 'package:grocery_app/models/product_model.dart';
 import 'package:grocery_app/ui/home/home_view_model.dart';
 import 'package:grocery_app/ui/home/widgets/category_card.dart';
 
-Stack productImage(ProductModel product) {
-  return Stack(
-    clipBehavior: Clip.none,
-    alignment: Alignment.center,
-    children: [
-      Container(
-        width: 100,
-        height: 100,
-        decoration: BoxDecoration(
-          color: product.color,
-          shape: BoxShape.circle,
-        ),
-      ),
-      Positioned(bottom: -8, child: Image.asset(product.image)),
-    ],
-  );
-}
-
-Padding cartCounter(HomeViewModel viewModel, int index, ProductModel product) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+class HomeViewWidgets {
+  static Stack productImage(ProductModel product) {
+    return Stack(
+      clipBehavior: Clip.none,
+      alignment: Alignment.center,
       children: [
-        InkWell(
-          onTap: () {
-            viewModel.decreaseQuantity(index);
-          },
-          child: Image.asset(AppImages.minusIcon),
+        Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            color: product.color,
+            shape: BoxShape.circle,
+          ),
         ),
-        Text(product.quantity.toString(), style: AppTextStyles.cartCountStyle),
-        InkWell(
-          onTap: () {
-            viewModel.increaseQuantity(index);
-          },
-          child: Image.asset(AppImages.plusIcon),
-        ),
+        Positioned(bottom: -8, child: Image.asset(product.image)),
       ],
-    ),
-  );
-}
+    );
+  }
 
-InkWell addToCartButton(HomeViewModel viewModel, int index) {
-  return InkWell(
-    onTap: () {
-      viewModel.addToCart(index);
-    },
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(AppImages.cartIcon),
-        const SizedBox(width: 5),
-        Text(AppStrings.addToCart, style: AppTextStyles.cartCountStyle),
-      ],
-    ),
-  );
-}
+  static Padding cartCounter(
+    HomeViewModel viewModel,
+    int index,
+    ProductModel product,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          InkWell(
+            onTap: () {
+              viewModel.decreaseQuantity(index);
+            },
+            child: Image.asset(AppImages.minusIcon),
+          ),
+          Text(
+            product.quantity.toString(),
+            style: AppTextStyles.cartCountStyle,
+          ),
+          InkWell(
+            onTap: () {
+              viewModel.increaseQuantity(index);
+            },
+            child: Image.asset(AppImages.plusIcon),
+          ),
+        ],
+      ),
+    );
+  }
 
-Positioned offerTag() {
-  return Positioned(
-    top: 0,
-    left: 0,
-    child: Container(
-      padding: EdgeInsets.all(5),
-      color: AppColors.offerContainerColor,
-      child: Text(
-        AppStrings.newText,
-        style: AppTextStyles.categoryTitleStyle.copyWith(
-          color: AppColors.offerTagColor,
+  static InkWell addToCartButton(HomeViewModel viewModel, int index) {
+    return InkWell(
+      onTap: () {
+        viewModel.addToCart(index);
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(AppImages.cartIcon),
+          const SizedBox(width: 5),
+          Text(AppStrings.addToCart, style: AppTextStyles.cartCountStyle),
+        ],
+      ),
+    );
+  }
+
+  static Positioned offerTag() {
+    return Positioned(
+      top: 0,
+      left: 0,
+      child: Container(
+        padding: EdgeInsets.all(5),
+        color: AppColors.offerContainerColor,
+        child: Text(
+          AppStrings.newText,
+          style: AppTextStyles.categoryTitleStyle.copyWith(
+            color: AppColors.offerTagColor,
+          ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 
-Widget favoriteButton(
-  HomeViewModel viewModel,
-  int index,
-  ProductModel product,
-) {
-  return InkWell(
-    onTap: () {
-      viewModel.toggleFavorite(index);
-    },
-    child: Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: Icon(
-        product.isFavorite ? Icons.favorite : Icons.favorite_border,
-        color:
-            product.isFavorite
-                ? AppColors.favoriteColor
-                : AppColors.greyTextColor,
+  static Widget favoriteButton(
+    HomeViewModel viewModel,
+    int index,
+    ProductModel product,
+  ) {
+    return InkWell(
+      onTap: () {
+        viewModel.toggleFavorite(index);
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Icon(
+          product.isFavorite ? Icons.favorite : Icons.favorite_border,
+          color:
+              product.isFavorite
+                  ? AppColors.favoriteColor
+                  : AppColors.greyTextColor,
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
-SingleChildScrollView productCategories(HomeViewModel viewModel) {
-  return SingleChildScrollView(
-    scrollDirection: Axis.horizontal,
-    child: Row(
-      children: List.generate(viewModel.categories.length, (index) {
-        final category = viewModel.categories[index];
-        return Padding(
-          padding: const EdgeInsets.only(right: 15.0),
-          child: CategoryCard(category: category),
-        );
-      }),
-    ),
-  );
+  static SingleChildScrollView productCategories(HomeViewModel viewModel) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: List.generate(viewModel.categories.length, (index) {
+          final category = viewModel.categories[index];
+          return Padding(
+            padding: const EdgeInsets.only(right: 15.0),
+            child: CategoryCard(category: category),
+          );
+        }),
+      ),
+    );
+  }
 }

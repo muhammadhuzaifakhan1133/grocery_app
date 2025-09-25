@@ -28,7 +28,7 @@ class ProductDetailView extends StatelessWidget {
       backgroundColor: AppColors.whiteColor,
       body: Column(
         children: [
-          productImageContainer(context: context, product: product),
+          ProductDetailWidgets.productImageContainer(context: context, product: product),
           Expanded(
             child: Container(
               width: context.width,
@@ -42,7 +42,7 @@ class ProductDetailView extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  productPriceAndFavIcon(viewModel: viewModel, product: product, index: index),
+                  ProductDetailWidgets.productPriceAndFavIcon(viewModel: viewModel, product: product, index: index),
                   const SizedBox(height: 3),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -65,15 +65,15 @@ class ProductDetailView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 5),
-                  ratingAndReviews(),
+                  ProductDetailWidgets.ratingAndReviews(),
                   const SizedBox(height: 10),
                   Expanded(
                     child: SingleChildScrollView(
-                      child: productDescription(viewModel: viewModel, product: product),
+                      child: ProductDetailWidgets.productDescription(viewModel: viewModel, product: product),
                     ),
                   ),
                   const SizedBox(height: 5),
-                  quantityCard(viewModel: viewModel, index: index, product: product, context: context),
+                  ProductDetailWidgets.quantityCard(viewModel: viewModel, index: index, product: product, context: context),
                   const SizedBox(height: 10),
                   CustomButton(
                     buttonText: "Add to Cart",

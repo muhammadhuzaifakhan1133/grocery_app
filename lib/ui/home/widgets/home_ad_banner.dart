@@ -11,7 +11,7 @@ class HomeAdBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.read<HomeViewModel>();
     return Container(
-      height: context.height * 0.3,
+      height: context.isPortrait ? context.height * 0.3 : context.height * 0.45,
       color: Colors.red,
       width: double.infinity,
       child: Stack(

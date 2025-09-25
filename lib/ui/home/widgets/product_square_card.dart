@@ -42,7 +42,7 @@ class ProductSquareCard extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      productImage(product),
+                      HomeViewWidgets.productImage(product),
                       const SizedBox(height: 10),
                       Text(
                         product.price,
@@ -71,17 +71,17 @@ class ProductSquareCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 if (product.isAddedInCart)
-                  cartCounter(viewModel, index, product),
+                  HomeViewWidgets.cartCounter(viewModel, index, product),
           
                 if (!product.isAddedInCart)
-                  addToCartButton(viewModel, index),
+                  HomeViewWidgets.addToCartButton(viewModel, index),
               ],
             ),
-            offerTag(),
+            HomeViewWidgets.offerTag(),
             Positioned(
               top: 0,
               right: 0,
-              child: favoriteButton(viewModel, index, product)),
+              child: HomeViewWidgets.favoriteButton(viewModel, index, product)),
           ],
         ),
       ),

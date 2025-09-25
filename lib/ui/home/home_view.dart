@@ -55,7 +55,10 @@ class HomeView extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 15),
-                  productCategories(viewModel),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: HomeViewWidgets.productCategories(viewModel),
+                  ),
                   const SizedBox(height: 25),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
