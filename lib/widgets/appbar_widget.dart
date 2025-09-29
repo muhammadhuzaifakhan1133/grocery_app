@@ -7,6 +7,7 @@ AppBar appBarWidget({
   required BuildContext context,
   Color textColor = AppColors.blackColor,
   Color? backgroundColor,
+  bool showBackButton = true,
   List<Widget>? actions,
 }) {
   return AppBar(
@@ -17,11 +18,14 @@ AppBar appBarWidget({
       title,
       style: AppTextStyles.appBarTitleStyle.copyWith(color: textColor),
     ),
-    leading: IconButton(
-      icon: Icon(Icons.arrow_back, color: textColor),
-      onPressed: () {
-        Navigator.pop(context);
-      },
-    ),
+    leading:
+        showBackButton
+            ? IconButton(
+              icon: Icon(Icons.arrow_back, color: textColor),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+            : null,
   );
 }

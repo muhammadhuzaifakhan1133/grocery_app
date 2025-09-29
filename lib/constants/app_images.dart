@@ -42,4 +42,54 @@ class AppImages {
   static const String reviewPerson3 = 'assets/images/review3.png';
   static const String reviewPerson4 = 'assets/images/review4.png';
   static const String editIcon = 'assets/icons/edit_icon.png';
+  static const String deleteIcon = 'assets/icons/delete_icon.png';
+  static const String discountIcon = 'assets/icons/discount_icon.png';
+  static const String freeShippingIcon = 'assets/icons/free_shipping_icon.png';
+  static const String deliveryIcon = 'assets/icons/delivery_icon.png';
+  static const String cirlceTickGreyIcon = 'assets/icons/cirlce_tick_grey.png';
+  static const String cirlceTickGreenIcon =
+      'assets/icons/cirlce_tick_green.png';
+  static const String profileImage = 'assets/images/profile_image.png';
+  static const String aboutMeOption = 'assets/icons/about_me_option.png';
+  static const String myOrdersOption = 'assets/icons/my_orders_option.png';
+  static const String myFavoritesOption =
+      'assets/icons/my_favorites_option.png';
+  static const String myAddressOption = 'assets/icons/my_address_option.png';
+  static const String creditCardsOption =
+      'assets/icons/credit_cards_option.png';
+  static const String transactionsOption =
+      'assets/icons/transactions_option.png';
+  static const String notificationsOption =
+      'assets/icons/notifications_option.png';
+  static const String signOutOption = 'assets/icons/sign_out_option.png';
+  static const String aboutMe1 = 'assets/icons/about_me_1.png';
+  static const String aboutMe2 = 'assets/icons/about_me_2.png';
+  static const String aboutMe3 = 'assets/icons/about_me_3.png';
+  static const String myOrderIcon = 'assets/icons/my_order_icon.png';
+  static const String myOrderIcon2 = 'assets/icons/my_order_icon2.png';
+  static const String orderConfirmIcon = 'assets/icons/order_confirm_icon.png';
+  static const String orderShippedIcon = 'assets/icons/order_shipped_icon.png';
+  static const String outForDeliveryIcon =
+      'assets/icons/out_for_delivery_icon.png';
+  static const String orderDeliveredIcon =
+      'assets/icons/order_delivered_icon.png';
+  static const String expandIcon = 'assets/icons/order_expand_icon.png';
+  static const String collapseIcon = 'assets/icons/order_collapse_icon.png';
+  static const String myAddressIcon = 'assets/icons/my_address_icon.png';
+  static const String addressIcon1 = 'assets/icons/address_icon1.png';
+  static const String addressIcon2 = 'assets/icons/address_icon2.png';
+  static const String addressIcon3 = 'assets/icons/address_icon3.png';
+  static const String addressIcon4 = 'assets/icons/address_icon4.png';
+  static const String addressIcon5 = 'assets/icons/address_icon5.png';
+  static const String addressIcon6 = 'assets/icons/address_icon6.png';
+  static const String switchOnIcon = 'assets/icons/switch_on_icon.png';
+  static const String switchOffIcon = 'assets/icons/switch_off_icon.png';
+  static const String masterCard = 'assets/icons/master_card_icon.png';
+  static const String visaCard = 'assets/icons/visa_card_icon.png';
+  static const String paypal = 'assets/icons/paypal_icon.png';
+  static const String cardIcon = 'assets/icons/card_icon.png';
+  static const String cardIcon2 = 'assets/icons/card_icon2.png';
+  static const String cardIcon3 = 'assets/icons/card_icon3.png';
+  static const String cardIcon4 = 'assets/icons/card_icon4.png';
+  static const String creditCard = 'assets/images/credit_card.png';
 }

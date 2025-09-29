@@ -7,6 +7,7 @@ import 'package:grocery_app/models/product_model.dart';
 import 'package:grocery_app/ui/home/home_view_model.dart';
 import 'package:grocery_app/ui/home/widgets/home_view_widgets.dart';
 import 'package:grocery_app/ui/product_detail/widgets/product_detail_widgets.dart';
+import 'package:grocery_app/ui/product_detail/widgets/quantity_card.dart';
 import 'package:grocery_app/utils/custom_ui_clippers.dart';
 import 'package:grocery_app/utils/extensions.dart';
 import 'package:grocery_app/widgets/custom_button.dart';
@@ -43,66 +44,55 @@ class ProductDetailView extends StatelessWidget {
                   topRight: Radius.circular(30),
                 ),
               ),
-              child: Column(
-                children: [
-                  ProductDetailWidgets.productPriceAndFavIcon(
-                    viewModel: viewModel,
-                    product: product,
-                    index: index,
-                  ),
-                  const SizedBox(height: 3),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      product.title,
-                      style: AppTextStyles.productTitlleStyle.copyWith(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ProductDetailWidgets.productPriceAndFavIcon(
+                      viewModel: viewModel,
+                      product: product,
+                      index: index,
+                    ),
+                    const SizedBox(height: 3),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        product.title,
+                        style: AppTextStyles.productTitlleStyle.copyWith(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 3),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      product.availableQty,
-                      style: AppTextStyles.categoryTitleStyle.copyWith(
-                        fontSize: 12,
+                    const SizedBox(height: 3),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        product.availableQty,
+                        style: AppTextStyles.categoryTitleStyle.copyWith(
+                          fontSize: 12,
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 5),
-                  ProductDetailWidgets.ratingAndReviews(
-                    onReviewsTap: () {
-                      viewModel.navigateToReviewsView(context);
-                    },
-                  ),
-                  const SizedBox(height: 10),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: ProductDetailWidgets.productDescription(
-                        viewModel: viewModel,
-                        product: product,
+                    const SizedBox(height: 5),
+                    ProductDetailWidgets.ratingAndReviews(
+                      onReviewsTap: () {
+                        viewModel.navigateToReviewsView(context);
+                      },
+                    ),
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      height: context.height * 0.15,
+                      child: SingleChildScrollView(
+                        child: ProductDetailWidgets.productDescription(
+                          viewModel: viewModel,
+                          product: product,
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 5),
-                  ProductDetailWidgets.quantityCard(
-                    viewModel: viewModel,
-                    index: index,
-                    product: product,
-                    context: context,
-                  ),
-                  const SizedBox(height: 10),
-                  CustomButton(
-                    buttonText: "Add to Cart",
-                    iconImage: AppImages.whiteCartIcon,
-                    isIconRight: true,
-                    onButtonPressed: () {
-                      viewModel.addToCart(index);
-                    },
-                  ),
-                ],
+                    const SizedBox(height: 5),
+                    CartQuantityAndButton(viewModel: viewModel, index: index),
+                  ],
+                ),
               ),
             ),
           ),

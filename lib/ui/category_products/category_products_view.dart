@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:grocery_app/constants/app_colors.dart';
 import 'package:grocery_app/constants/app_images.dart';
+import 'package:grocery_app/routes/routes.dart';
 import 'package:grocery_app/ui/home/home_view_model.dart';
 import 'package:grocery_app/ui/home/widgets/product_grid_view.dart';
 import 'package:grocery_app/widgets/appbar_widget.dart';
@@ -21,7 +23,9 @@ class CategoryProductsView extends StatelessWidget {
         backgroundColor: AppColors.whiteColor,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.push(AppRoutes.filter);
+            },
             padding: EdgeInsets.only(right: 10),
             icon: Image.asset(AppImages.blackFilterIcon),
           ),

@@ -14,6 +14,7 @@ class CustomButton extends StatelessWidget {
   final Color? buttonColor;
   final double? iconLeftPadding;
   final bool? isIconRight;
+  final bool? isButtonDisabled;
   const CustomButton({
     super.key,
     this.width,
@@ -26,6 +27,7 @@ class CustomButton extends StatelessWidget {
     this.buttonColor,
     this.iconLeftPadding,
     this.isIconRight = false,
+    this.isButtonDisabled = false,
   });
 
   @override
@@ -44,7 +46,15 @@ class CustomButton extends StatelessWidget {
                 : null,
       ),
       child: TextButton(
-        onPressed: onButtonPressed,
+        onPressed: isButtonDisabled == true ? null : onButtonPressed,
+        style:
+            isButtonDisabled == true
+                ? TextButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  disabledForegroundColor: Colors.grey,
+                  disabledBackgroundColor: Colors.grey,
+                )
+                : null,
         child:
             iconImage == null
                 ? Text(

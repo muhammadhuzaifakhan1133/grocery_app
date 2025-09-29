@@ -9,20 +9,27 @@ import 'package:grocery_app/ui/home/home_view_model.dart';
 import 'package:grocery_app/ui/home/widgets/category_card.dart';
 
 class HomeViewWidgets {
-  static Stack productImage(ProductModel product) {
+  static Stack productImage(
+    ProductModel product, {
+    double? width,
+    double? height,
+  }) {
     return Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.center,
       children: [
         Container(
-          width: 100,
-          height: 100,
+          width: width,
+          height: height,
           decoration: BoxDecoration(
             color: product.color,
             shape: BoxShape.circle,
           ),
         ),
-        Positioned(bottom: -8, child: Image.asset(product.image)),
+        Positioned(
+          bottom: -8,
+          child: Image.asset(product.image, width: width, height: height),
+        ),
       ],
     );
   }
@@ -44,7 +51,7 @@ class HomeViewWidgets {
             child: Image.asset(AppImages.minusIcon),
           ),
           Text(
-            product.quantity.toString(),
+            viewModel.getCartQuantity(index).toString(),
             style: AppTextStyles.cartCountStyle,
           ),
           InkWell(
@@ -61,7 +68,7 @@ class HomeViewWidgets {
   static InkWell addToCartButton(HomeViewModel viewModel, int index) {
     return InkWell(
       onTap: () {
-        viewModel.addToCart(index);
+        viewModel.increaseQuantity(index);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -94,7 +101,7 @@ class HomeViewWidgets {
   static Widget favoriteButton(
     HomeViewModel viewModel,
     int index,
-    ProductModel product,
+    bool isFavorite,
   ) {
     return InkWell(
       onTap: () {
@@ -103,9 +110,9 @@ class HomeViewWidgets {
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Icon(
-          product.isFavorite ? Icons.favorite : Icons.favorite_border,
+          isFavorite ? Icons.favorite : Icons.favorite_border,
           color:
-              product.isFavorite
+              isFavorite
                   ? AppColors.favoriteColor
                   : AppColors.greyTextColor,
         ),

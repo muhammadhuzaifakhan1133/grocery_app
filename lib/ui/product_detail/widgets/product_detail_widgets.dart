@@ -65,73 +65,18 @@ class ProductDetailWidgets {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          product.price,
+          "\$${product.price}",
           style: AppTextStyles.appBarTitleStyle.copyWith(
             color: AppColors.priceColor,
           ),
         ),
-        Selector<HomeViewModel, ProductModel>(
-          selector: (context, viewModel) => viewModel.featuredProducts[index],
-          builder: (context, product, child) {
-            return HomeViewWidgets.favoriteButton(viewModel, index, product);
+        Selector<HomeViewModel, bool>(
+          selector: (context, viewModel) => viewModel.isFavorite(index),
+          builder: (context, isFavorite, child) {
+            return HomeViewWidgets.favoriteButton(viewModel, index, isFavorite);
           },
         ),
       ],
-    );
-  }
-
-  static SizedBox quantityCard({
-    required HomeViewModel viewModel,
-    required int index,
-    required ProductModel product,
-    required BuildContext context,
-  }) {
-    return SizedBox(
-      width: context.width,
-      height: 50,
-      child: Card(
-        color: AppColors.whiteColor,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Quantity", style: AppTextStyles.cartCountStyle),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15.0),
-                    child: InkWell(
-                      child: Image.asset(AppImages.minusIcon),
-                      onTap: () {
-                        viewModel.decreaseQuantity(index);
-                      },
-                    ),
-                  ),
-                  VerticalDivider(color: AppColors.dividerColor, thickness: 1),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18),
-                    child: Text(
-                      product.quantity.toString(),
-                      style: AppTextStyles.appBarTitleStyle,
-                    ),
-                  ),
-                  VerticalDivider(color: AppColors.dividerColor, thickness: 1),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15.0),
-                    child: InkWell(
-                      child: Image.asset(AppImages.plusIcon),
-                      onTap: () {
-                        viewModel.increaseQuantity(index);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 
@@ -208,3 +153,4 @@ class ProductDetailWidgets {
     );
   }
 }
+

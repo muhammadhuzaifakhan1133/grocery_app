@@ -13,4 +13,14 @@ class AppRoutes {
   static const String productDetails = '/product-details';
   static const String reviews = '/reviews';
   static const String addReview = '/add-review';
+  static const String filter = '/filter';
+  static const String aboutMe = '/about-me';
+  static const String myOrders = '/my-orders';
+  static const String orderDetails = '/order-details';
+  static const String myAddress = '/my-address';
+  static const String addAddress = '/add-address';
+  static const String notifications = '/notifications';
+  static const String transactions = '/transactions';
+  static const String creditCards = '/credit-cards';
+  static const String addCreditCards = '/add-credit-cards';
 }

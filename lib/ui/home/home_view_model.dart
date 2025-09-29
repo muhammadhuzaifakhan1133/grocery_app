@@ -5,13 +5,17 @@ import 'package:grocery_app/constants/app_images.dart';
 import 'package:grocery_app/models/category_model.dart';
 import 'package:grocery_app/models/product_model.dart';
 import 'package:grocery_app/routes/routes.dart';
-
+import 'package:grocery_app/ui/cart/cart_view_model.dart';
+import 'package:grocery_app/ui/favorites/favorites_view_model.dart';
+import 'package:provider/provider.dart';
 
 class HomeViewModel extends ChangeNotifier {
-
   HomeViewModel() {
     startAutoScrollAdTimer();
   }
+
+  CartViewModel? cartModel;
+  FavoritesViewModel? favoriteModel;
 
   PageController pageController = PageController();
 
@@ -31,11 +35,13 @@ class HomeViewModel extends ChangeNotifier {
       } else {
         currentAdBannerIndex = 0;
       }
-      pageController.animateToPage(
-        currentAdBannerIndex,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeIn,
-      );
+      if (pageController.hasClients) {
+        pageController.animateToPage(
+          currentAdBannerIndex,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeIn,
+        );
+      }
       notifyListeners();
     });
   }
@@ -66,51 +72,44 @@ class HomeViewModel extends ChangeNotifier {
     ProductModel(
       image: AppImages.fruit1,
       title: 'Fresh Peach',
-      price: '\$8.00',
+      price: 8.00,
       availableQty: 'dozen',
-      isAddedInCart: false,
       color: const Color(0xffFFCEC1),
     ),
     ProductModel(
       image: AppImages.fruit2,
       title: 'Avacoda',
-      price: '\$7.00',
+      price: 7.00,
       availableQty: '2.0 lbs',
-      isAddedInCart: true,
       color: const Color(0xffFCFFD9),
     ),
     ProductModel(
       image: AppImages.fruit3,
       title: 'Pineapple',
-      price: '\$9.90',
+      price: 9.90,
       availableQty: '1kg',
-      isAddedInCart: false,
-      isFavorite: true,
       color: const Color(0xffFFE6C2),
     ),
     ProductModel(
       image: AppImages.fruit4,
       title: 'Black Grapes',
-      price: '\$7.05',
+      price: 7.05,
       availableQty: '5.0 lbs',
-      isAddedInCart: false,
+
       color: const Color(0xffFEE1ED),
     ),
     ProductModel(
       image: AppImages.fruit5,
       title: 'Pomegranate',
-      price: '\$2.09',
+      price: 2.09,
       availableQty: '1.50 lbs',
-      isAddedInCart: true,
       color: Color(0xffFFE3E2),
     ),
     ProductModel(
       image: AppImages.fruit6,
       title: 'Fresh Broccoli',
-      price: '\$3.00',
+      price: 3.00,
       availableQty: '1kg',
-      isAddedInCart: false,
-      isFavorite: true,
       color: const Color(0xffD2FFD0),
     ),
   ];
@@ -160,84 +159,26 @@ class HomeViewModel extends ChangeNotifier {
     ),
   ];
 
-  void addToCart(int index) {
-    final product = featuredProducts[index];
-    featuredProducts[index] = ProductModel(
-      image: product.image,
-      title: product.title,
-      price: product.price,
-      availableQty: product.availableQty,
-      isAddedInCart: true,
-      isFavorite: product.isFavorite,
-      quantity: 1,
-      color: product.color,
-    );
-    notifyListeners();
+  int getCartQuantity(int index) {
+    return cartModel!.getProductQuantity(featuredProducts[index]);
   }
 
-  void removeFromCart(int index) {
-    final product = featuredProducts[index];
-    featuredProducts[index] = ProductModel(
-      image: product.image,
-      title: product.title,
-      price: product.price,
-      availableQty: product.availableQty,
-      isAddedInCart: false,
-      isFavorite: product.isFavorite,
-      quantity: 1,
-      color: product.color,
-    );
-    notifyListeners();
+  bool isFavorite(int index) {
+    return favoriteModel!.isFavorite(featuredProducts[index]);
   }
 
   void increaseQuantity(int index) {
-    final product = featuredProducts[index];
-    final newQuantity = product.quantity + 1;
-    featuredProducts[index] = ProductModel(
-      image: product.image,
-      title: product.title,
-      price: product.price,
-      availableQty: product.availableQty,
-      isAddedInCart: product.isAddedInCart,
-      isFavorite: product.isFavorite,
-      quantity: newQuantity,
-      color: product.color,
-    );
+    cartModel!.increaseQuantity(featuredProducts[index]);
     notifyListeners();
   }
 
   void decreaseQuantity(int index) {
-    final product = featuredProducts[index];
-    if (product.quantity > 1) {
-      final newQuantity = product.quantity - 1;
-      featuredProducts[index] = ProductModel(
-        image: product.image,
-        title: product.title,
-        price: product.price,
-        availableQty: product.availableQty,
-        isAddedInCart: product.isAddedInCart,
-        isFavorite: product.isFavorite,
-        quantity: newQuantity,
-        color: product.color,
-      );
-      notifyListeners();
-    } else {
-      removeFromCart(index);
-    }
+    cartModel!.decreaseQuantity(featuredProducts[index]);
+    notifyListeners();
   }
 
   void toggleFavorite(int index) {
-    final product = featuredProducts[index];
-    featuredProducts[index] = ProductModel(
-      image: product.image,
-      title: product.title,
-      price: product.price,
-      availableQty: product.availableQty,
-      isAddedInCart: product.isAddedInCart,
-      isFavorite: !product.isFavorite,
-      quantity: product.quantity,
-      color: product.color,
-    );
+    favoriteModel!.toggleFavorite(featuredProducts[index]);
     notifyListeners();
   }
 

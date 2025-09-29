@@ -45,7 +45,7 @@ class ProductSquareCard extends StatelessWidget {
                       HomeViewWidgets.productImage(product),
                       const SizedBox(height: 10),
                       Text(
-                        product.price,
+                        "\$${product.price}",
                         style:
                             AppTextStyles.productPriceStyle,
                       ),
@@ -70,10 +70,10 @@ class ProductSquareCard extends StatelessWidget {
                   color: AppColors.inactiveColor,
                 ),
                 const SizedBox(height: 10),
-                if (product.isAddedInCart)
+                if (viewModel.getCartQuantity(index) != 0)
                   HomeViewWidgets.cartCounter(viewModel, index, product),
           
-                if (!product.isAddedInCart)
+                if (viewModel.getCartQuantity(index) == 0)
                   HomeViewWidgets.addToCartButton(viewModel, index),
               ],
             ),
@@ -81,7 +81,7 @@ class ProductSquareCard extends StatelessWidget {
             Positioned(
               top: 0,
               right: 0,
-              child: HomeViewWidgets.favoriteButton(viewModel, index, product)),
+              child: HomeViewWidgets.favoriteButton(viewModel, index, viewModel.isFavorite(index))),
           ],
         ),
       ),

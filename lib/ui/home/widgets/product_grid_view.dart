@@ -27,20 +27,20 @@ class ProductGridView extends StatelessWidget {
         maxCrossAxisExtent: 200,
         mainAxisSpacing: 20,
         crossAxisSpacing: 20,
+        mainAxisExtent: 220,
         // A fixed aspect ratio ensures cards don't get stretched or squeezed.
         // 0.75 means the height is 1.33 times the width (4:3 aspect ratio),
         // which is a good fit for this card design.
-        childAspectRatio: context.isPortrait ? 0.68 : 0.85,
+        // childAspectRatio: context.isPortrait ? 0.6 : 0.85,
       ),
       itemCount: viewModel.featuredProducts.length,
       itemBuilder: (context, index) {
-        return Selector<HomeViewModel, ProductModel>(
-          selector: (context, viewModel) => viewModel.featuredProducts[index],
-          builder: (context, product, child) {
+        return Consumer<HomeViewModel>(
+          builder: (context, vm, child) {
             return ProductSquareCard(
               viewModel: viewModel,
               index: index,
-              product: product,
+              product: vm.featuredProducts[index],
             );
           },
         );

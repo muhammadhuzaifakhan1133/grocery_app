@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:grocery_app/constants/app_colors.dart';
 import 'package:grocery_app/constants/app_images.dart';
 import 'package:grocery_app/constants/app_strings.dart';
 import 'package:grocery_app/constants/app_text_styles.dart';
 import 'package:grocery_app/models/product_model.dart';
+import 'package:grocery_app/routes/routes.dart';
 import 'package:grocery_app/ui/home/home_view_model.dart';
 import 'package:grocery_app/ui/home/widgets/home_ad_banner.dart';
 import 'package:grocery_app/ui/home/widgets/home_view_widgets.dart';
@@ -28,7 +30,11 @@ class HomeView extends StatelessWidget {
               controller: TextEditingController(),
               prefixIcon: Image.asset(AppImages.searchIcon),
               hintText: AppStrings.searchKeywordHint,
-              suffixIcon: Image.asset(AppImages.filterIcon),
+              suffixIcon: GestureDetector(
+                onTap: () {
+                  context.push(AppRoutes.filter);
+                },
+                child: Image.asset(AppImages.filterIcon)),
             ),
             const SizedBox(height: 10),
             Column(

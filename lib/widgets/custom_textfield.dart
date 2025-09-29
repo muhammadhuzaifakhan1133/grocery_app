@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:grocery_app/constants/app_colors.dart';
 import 'package:grocery_app/constants/app_text_styles.dart';
 import 'package:grocery_app/utils/extensions.dart';
@@ -18,7 +19,10 @@ class CustomTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final Widget? hintWidget;
   final double? width;
+  final double? height;
   final int maxLines;
+  final bool? enabled;
+  final List<TextInputFormatter>? inputFormatters;
   const CustomTextField({
     super.key,
     this.hintText,
@@ -35,15 +39,21 @@ class CustomTextField extends StatelessWidget {
     this.keyboardType,
     this.hintWidget,
     this.width,
+    this.height,
     this.maxLines = 1,
+    this.enabled,
+    this.inputFormatters,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? context.width * 0.9,
+      height: height,
       child: TextFormField(
         controller: controller,
+        inputFormatters: inputFormatters,
+        enabled: enabled,
         maxLines: maxLines,
         obscureText: obscureText,
         textInputAction: textInputAction,
@@ -59,7 +69,10 @@ class CustomTextField extends StatelessWidget {
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
           filled: true,
-          fillColor: fillColor ?? AppColors.whiteColor,
+          fillColor:
+              enabled == false
+                  ? AppColors.greyColor.shade100
+                  : (fillColor ?? AppColors.whiteColor),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 10),
             borderSide:

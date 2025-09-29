@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const primaryDarkColor = Color(0xff6CC51D);
   static const primaryColor = Color(0xffAEDC81);
+  static const primaryColorLight = Color(0xffEBFFD7);
   static const inactiveColor = Color(0xffDCDCDC);
   static const greyTextColor = Color(0xff868889);
   static const blackColor = Color(0xff000000);
@@ -24,4 +25,6 @@ class AppColors {
   static const priceColor = Color(0xff28B446);
   static const starColor = Color(0xffFFC107);
   static const dividerColor = Color(0xffEBEBEB);
+  static const deleteColor = Color(0xffEF574B);
+  static const greyColor = Colors.grey;
 }
