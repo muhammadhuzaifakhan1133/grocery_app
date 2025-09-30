@@ -23,6 +23,7 @@ class CustomTextField extends StatelessWidget {
   final int maxLines;
   final bool? enabled;
   final List<TextInputFormatter>? inputFormatters;
+  final VoidCallback? onTap;
   const CustomTextField({
     super.key,
     this.hintText,
@@ -43,6 +44,7 @@ class CustomTextField extends StatelessWidget {
     this.maxLines = 1,
     this.enabled,
     this.inputFormatters,
+    this.onTap,
   });
 
   @override
@@ -52,6 +54,7 @@ class CustomTextField extends StatelessWidget {
       height: height,
       child: TextFormField(
         controller: controller,
+        onTap: onTap,
         inputFormatters: inputFormatters,
         enabled: enabled,
         maxLines: maxLines,

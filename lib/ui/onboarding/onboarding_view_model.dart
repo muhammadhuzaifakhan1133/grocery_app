@@ -4,13 +4,12 @@ import 'package:grocery_app/constants/app_images.dart';
 import 'package:grocery_app/constants/app_strings.dart';
 import 'package:grocery_app/models/onboarding_data.dart';
 import 'package:grocery_app/routes/routes.dart';
-import 'package:grocery_app/ui/auth/welcome/auth_welcome_view.dart';
 
 class OnboardingViewModel extends ChangeNotifier {
   // page view controller
   PageController pageController = PageController();
   // current page index in page view
-  // int currentPage = 0;
+  int currentPage = 0;
   // onboarding data
   List<OnboardingDataModel> onboardingData = [
     OnboardingDataModel(
@@ -35,15 +34,31 @@ class OnboardingViewModel extends ChangeNotifier {
     ),
   ];
 
+  /// Called only by PageView when user swipes
+  void onPageChanged(int index) {
+    currentPage = index;
+    notifyListeners();
+  }
 
-  onButtonPressed(int index, BuildContext context) {
-    if (index < onboardingData.length - 1) {
+  /// Called when indicator is tapped
+  void jumpToPage(int index) {
+    pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+    currentPage = index;
+    notifyListeners();
+  }
+
+  /// Called when next/get started button pressed
+  void onButtonPressed(BuildContext context) {
+    if (currentPage < onboardingData.length - 1) {
       pageController.nextPage(
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     } else {
-      // Navigate to home screen or another screen
       context.push(AppRoutes.welcome);
     }
   }

@@ -26,11 +26,13 @@ import 'package:grocery_app/ui/profile/sub_views/transactions/transactions_view.
 import 'package:grocery_app/ui/profile/sub_views/transactions/transactions_view_model.dart';
 import 'package:grocery_app/ui/reviews/add_review_view.dart';
 import 'package:grocery_app/ui/reviews/reviews_view.dart';
+import 'package:grocery_app/ui/search/search_view.dart';
+import 'package:grocery_app/ui/shipping/shipping_view.dart';
 import 'package:grocery_app/ui/splash/splash_view.dart';
 import 'package:grocery_app/ui/verify_number/verify_number_view.dart';
 
 final router = GoRouter(
-  initialLocation: AppRoutes.homeNavigation,
+  initialLocation: AppRoutes.splash,
   routes: [
     GoRoute(
       path: AppRoutes.splash,
@@ -161,6 +163,16 @@ final router = GoRouter(
       path: AppRoutes.addCreditCards,
       name: AppRoutes.addCreditCards,
       builder: (context, state) => const AddCreditCardView(),
+    ),
+    GoRoute(
+      path: AppRoutes.search,
+      name: AppRoutes.search,
+      builder: (context, state) => const SearchView(),
+    ),
+    GoRoute(
+      path: AppRoutes.shipping,
+      name: AppRoutes.shipping,
+      builder: (context, state) => const ShippingView(),
     ),
   ],
 

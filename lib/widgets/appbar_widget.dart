@@ -9,6 +9,7 @@ AppBar appBarWidget({
   Color? backgroundColor,
   bool showBackButton = true,
   List<Widget>? actions,
+  Function()? onBackPressed,
 }) {
   return AppBar(
     centerTitle: true,
@@ -22,7 +23,7 @@ AppBar appBarWidget({
         showBackButton
             ? IconButton(
               icon: Icon(Icons.arrow_back, color: textColor),
-              onPressed: () {
+              onPressed: onBackPressed ?? () {
                 Navigator.pop(context);
               },
             )

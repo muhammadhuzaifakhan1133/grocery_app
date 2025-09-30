@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:grocery_app/constants/app_colors.dart';
 import 'package:grocery_app/constants/app_text_styles.dart';
+import 'package:grocery_app/routes/routes.dart';
 import 'package:grocery_app/ui/cart/cart_view_model.dart';
 import 'package:grocery_app/ui/favorites/dismissible_product_card.dart';
 import 'package:grocery_app/utils/extensions.dart';
@@ -70,7 +72,12 @@ class CartView extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-            CustomButton(buttonText: "Checkout"),
+            CustomButton(
+              buttonText: "Checkout",
+              onButtonPressed: () {
+                context.push(AppRoutes.shipping);
+              },
+            ),
             const SizedBox(height: 80),
           ],
         ),

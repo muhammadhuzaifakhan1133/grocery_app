@@ -108,6 +108,9 @@ class AuthWelcomeView extends StatelessWidget {
             color: AppColors.blackColor,
             fontWeight: FontWeight.w500,
           ),
+          onButtonPressed: () {
+            context.push(AppRoutes.homeNavigation);
+          },
         ),
         SizedBox(height: 10),
         CustomButton(

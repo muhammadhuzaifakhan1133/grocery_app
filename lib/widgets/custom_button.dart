@@ -15,6 +15,7 @@ class CustomButton extends StatelessWidget {
   final double? iconLeftPadding;
   final bool? isIconRight;
   final bool? isButtonDisabled;
+  final Widget? child;
   const CustomButton({
     super.key,
     this.width,
@@ -28,6 +29,7 @@ class CustomButton extends StatelessWidget {
     this.iconLeftPadding,
     this.isIconRight = false,
     this.isButtonDisabled = false,
+    this.child,
   });
 
   @override
@@ -56,7 +58,8 @@ class CustomButton extends StatelessWidget {
                 )
                 : null,
         child:
-            iconImage == null
+            child ??
+            (iconImage == null
                 ? Text(
                   buttonText,
                   style: textStyle ?? AppTextStyles.buttonStyle,
@@ -93,7 +96,7 @@ class CustomButton extends StatelessWidget {
                       ),
                     ],
                   ],
-                ),
+                )),
       ),
     );
   }

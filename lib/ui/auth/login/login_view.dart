@@ -71,7 +71,9 @@ class LoginView extends StatelessWidget {
             CustomButton(
               buttonText: AppStrings.login,
               onButtonPressed: () {
-                if (viewModel.formKey.currentState!.validate()) {}
+                if (viewModel.formKey.currentState!.validate()) {
+                  context.push(AppRoutes.homeNavigation);
+                }
               },
             ),
             SizedBox(height: 20),

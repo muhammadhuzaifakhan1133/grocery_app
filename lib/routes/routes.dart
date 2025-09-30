@@ -23,4 +23,6 @@ class AppRoutes {
   static const String transactions = '/transactions';
   static const String creditCards = '/credit-cards';
   static const String addCreditCards = '/add-credit-cards';
+  static const String search = '/search';
+  static const String shipping = "/shipping";
 }

@@ -72,7 +72,9 @@ class SignUpView extends StatelessWidget {
             CustomButton(
               buttonText: AppStrings.signup,
               onButtonPressed: () {
-                if (viewModel.formKey.currentState!.validate()) {}
+                if (viewModel.formKey.currentState!.validate()) {
+                  context.pushReplacement(AppRoutes.homeNavigation);
+                }
               },
             ),
             SizedBox(height: 20),

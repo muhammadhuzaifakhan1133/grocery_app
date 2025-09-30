@@ -21,6 +21,9 @@ import 'package:grocery_app/ui/profile/sub_views/my_address/my_address_view_mode
 import 'package:grocery_app/ui/profile/sub_views/my_orders/my_orders_view_model.dart';
 import 'package:grocery_app/ui/profile/sub_views/transactions/transactions_view_model.dart';
 import 'package:grocery_app/ui/reviews/reviews_vew_model.dart';
+import 'package:grocery_app/ui/search/search_view_model.dart';
+import 'package:grocery_app/ui/shipping/shipping_view.dart';
+import 'package:grocery_app/ui/shipping/shipping_view_model.dart';
 import 'package:grocery_app/ui/verify_number/verify_number_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -63,6 +66,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => TransactionsViewModel()),
         ChangeNotifierProvider(create: (_) => CreditCardsViewModel()),
         ChangeNotifierProvider(create: (_) => AddCreditCardViewModel()),
+        ChangeNotifierProvider(create: (_) => SearchViewModel()),
+        ChangeNotifierProvider(create: (_) => ShippingViewModel()),
       ],
       child: MaterialApp.router(
         routerConfig: router,

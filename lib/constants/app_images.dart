@@ -92,4 +92,7 @@ class AppImages {
   static const String cardIcon3 = 'assets/icons/card_icon3.png';
   static const String cardIcon4 = 'assets/icons/card_icon4.png';
   static const String creditCard = 'assets/images/credit_card.png';
+  static const String step3Icon1 = 'assets/icons/step3_icon1.png';
+  static const String step3Icon2 = 'assets/icons/step3_icon2.png';
+  static const String step3Icon3 = 'assets/icons/step3_icon3.png';
 }

@@ -30,11 +30,18 @@ class HomeView extends StatelessWidget {
               controller: TextEditingController(),
               prefixIcon: Image.asset(AppImages.searchIcon),
               hintText: AppStrings.searchKeywordHint,
+              onTap: () async {
+                await context.push(AppRoutes.search);
+                if (context.mounted) {
+                  FocusScope.of(context).unfocus();
+                }
+              },
               suffixIcon: GestureDetector(
                 onTap: () {
                   context.push(AppRoutes.filter);
                 },
-                child: Image.asset(AppImages.filterIcon)),
+                child: Image.asset(AppImages.filterIcon),
+              ),
             ),
             const SizedBox(height: 10),
             Column(
